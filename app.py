@@ -7,9 +7,10 @@ import datetime
 # --- 1. 頁面與快取設定 ---
 st.set_page_config(page_title="今彩539 AI預測系統", layout="centered")
 st.title("🔮 今彩539 機器學習預測系統")
+st.link_button("👉 點此前往查看最新開獎號碼", "http://www.9800.com.tw/lotto539/statistics.html")
 
 # 使用快取加快網頁讀取速度
-@st.cache_data 
+# @st.cache_data 
 def load_data():
     return pd.read_csv('processed_data.csv')
 
