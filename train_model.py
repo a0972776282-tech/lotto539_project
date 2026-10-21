@@ -9,6 +9,9 @@ df = pd.read_csv('processed_data.csv')
 # 確保資料按期別排序 (由舊到新，這樣「上一期」推「下一期」才有邏輯)
 df = df.sort_values('期別').reset_index(drop=True)
 
+# 🌟 新增這一行：強制模型只取資料庫中「最新的 150 筆」來訓練
+df = df.tail(30).reset_index(drop=True)
+
 # 準備我們的 X (特徵/題目) 和 Y (目標/答案)
 # 我們挑選數值型態的欄位作為特徵 (略過單雙字串)
 feature_cols = ['獎號1', '獎號2', '獎號3', '獎號4', '獎號5', '和值', '均值', '首尾差']
